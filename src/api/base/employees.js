@@ -28,6 +28,8 @@ export const edit = data => createAPI(`/api/employees/em/${data.id}`, 'PUT', dat
 
 export const importDown = data => createDown(`/api/employees/em/archive/export/${data.month}`, 'get', data) // 导出
 
+export const importPdf = data => createDown(`/api/employees/em/personal/pdf/${data.id}`, 'get', null) // PDF导出
+
 export const importReport = data => createAPI(`/api/system/pe/user/import`, 'post', data) // 导入
 
 export const settDetail = data => createAPI(`/api/employees/em/setting`, 'get', data) // 设置详细信息

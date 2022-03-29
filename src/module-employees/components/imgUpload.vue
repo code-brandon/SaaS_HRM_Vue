@@ -24,7 +24,7 @@
   export default {
     data: function () {
       return {
-        img: this.imgs,
+        // img: '',
         imgPhone: '',
         textTip: '',
         uploadDisabled: '',
@@ -40,6 +40,9 @@
         return {
           Authorization: `Bearer ${getToken()}`
         }
+      },
+      img: function () {
+        return this.imgs
       }
     },
     methods: {

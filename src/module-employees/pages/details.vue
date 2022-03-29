@@ -4,6 +4,14 @@
       <el-card>
           <el-tabs v-model="activeName" class="infoPosin">
             <el-tab-pane name="first" class="rInfo">
+
+              <div class="fr">
+                <a  class="fa fa-print" aria-hidden="true"  title="打印" @click='handleExport()'></a>
+                <el-tooltip class="item" effect="dark" content="点击打印按钮->右击打印预览界面->点击'打印'" placement="top-end">
+                  <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+                </el-tooltip>
+              </div>
+
               <span slot="label">登录账户设置</span>
               <component v-bind:is="accountInfo" :objId='objId' ref="user"></component>
             </el-tab-pane>
@@ -25,6 +33,7 @@
 import accountInfo from './../components/details-account-info'
 import userInfo from './../components/details-user-info'
 import postInfo from './../components/details-post-info'
+import {importPdf} from '@/api/base/employees'
 export default {
   name: 'employeesDetails',
   components: { accountInfo, userInfo, postInfo},
@@ -32,10 +41,33 @@ export default {
     return {
       accountInfo:'accountInfo',
       userInfo: 'userInfo',
-      postInfo: 'postInfo',  
+      postInfo: 'postInfo',
       activeName: 'first',
       objId: this.$route.params.id,
       dataList: []
+    }
+  },
+  methods: {
+    // 下载文件
+    handleExport() {
+      let id = this.$route.params.id;
+      console.log(id)
+      importPdf({ id: id })
+        .then(response => {
+          let blob = new Blob([response.data], {
+            type: 'application/pdf'
+          })
+          let link = document.createElement('a')
+          link.href = window.URL.createObjectURL(blob)
+          var filename = decodeURI(response.headers.filename)
+          // link.download = filename + '.xls'
+          link.download = filename
+          link.click()
+          this.$message.success('导出PDF成功！')
+        })
+        .catch(e => {
+          this.$message.error('导出PDF失败！')
+        })
     }
   }
 }

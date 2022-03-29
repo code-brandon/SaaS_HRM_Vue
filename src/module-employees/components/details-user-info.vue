@@ -418,6 +418,7 @@
         this.formData.username = this.userData.username
         this.formData.departmentName = this.userData.departmentName
         this.formData.mobile = this.userData.mobile
+        this.formData.staffPhoto = this.userData.staffPhoto
         this.formData.timeOfEntry = this.userData.timeOfEntry
         personal(this.formData).then(res => {
           this.$message({message: res.data.message, type: res.data.code === 10000 ? 'success' : 'error'})

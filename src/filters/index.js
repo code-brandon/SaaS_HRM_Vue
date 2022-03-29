@@ -330,6 +330,7 @@ export function formatDate(date, fmt) {
 function padLeftZero(str) {
   return ('00' + str).substr(str.length)
 }
+// TODO Blob -> Excel 导出
 export function getBlob(response) {
   let blob = new Blob([response.data], {
     type: 'application/vnd.ms-excel'
