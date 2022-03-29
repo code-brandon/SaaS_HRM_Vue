@@ -1,9 +1,9 @@
-import {createAPI,createImgUpAPI} from '@/utils/request'
+import {createAPI, createImgUpAPI} from '@/utils/request'
+// export const checkFace = data => createImgUpAPI(`/api/system/sys/faceLogin/checkFace`, 'post', data)
+import axios from 'axios'
 
-export const qrcode = data => createAPI('/sys/faceLogin/qrcode', 'get', data)
-export const codeCheck = data => createAPI(`/sys/faceLogin/qrcode/${data.code}`, 'get', data)
-//export const checkFace = data => createImgUpAPI(`/sys/faceLogin/checkFace`, 'post', data)
-import axios from "axios"
+export const qrcode = data => createAPI('/api/system/sys/faceLogin/qrcode', 'get', data)
+export const codeCheck = data => createAPI(`/api/system/sys/faceLogin/qrcode/${data.code}`, 'get', data)
 export const checkFace = (data) => {
     let config = {}
     config.data = data
@@ -13,9 +13,9 @@ export const checkFace = (data) => {
     }
     config.transformRequest = data
     return axios.request({
-        baseURL:process.env.BASE_API,
+        baseURL: process.env.BASE_API,
         method: 'post',
-        url: '/sys/faceLogin/checkFace',
+        url: '/api/system/sys/faceLogin/checkFace',
         ...config
-    });
+    })
 }

@@ -16,7 +16,9 @@ import {
 
 // 定义
 const _import = require('./import_' + process.env.NODE_ENV) // 懒加载 导包
-const whiteList = ['/login', '/reg', '/authredirect', 'departments'] // 白名单 无需跳转
+// const whiteList = ['/login', '/reg', '/authredirect', 'departments'] // 白名单 无需跳转
+const whiteList = ['/login', '/reg', '/authredirect','/facelogin'] // 白名单 无需跳转
+
 console.log(_import)
 // 配置
 Vue.use(Router)
@@ -46,6 +48,11 @@ export const constantRouterMap = [{
   component: _import('dashboard/pages/login'),
   hidden: true
 },
+  {
+    path: '/facelogin',
+    component: _import('dashboard/pages/facelogin'),
+    hidden: true
+  },
   {
     path: '/reg',
     component: _import('dashboard/pages/reg'),
