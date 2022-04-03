@@ -17,7 +17,7 @@ import {
 // 定义
 const _import = require('./import_' + process.env.NODE_ENV) // 懒加载 导包
 // const whiteList = ['/login', '/reg', '/authredirect', 'departments'] // 白名单 无需跳转
-const whiteList = ['/login', '/reg', '/authredirect','/facelogin'] // 白名单 无需跳转
+const whiteList = ['/login', '/reg', '/authredirect', '/facelogin'] // 白名单 无需跳转
 
 console.log(_import)
 // 配置
@@ -158,7 +158,6 @@ Router.prototype.push = function push(location, onResolve, onReject) {
   if (onResolve || onReject) return originalPush.call(this, location, onResolve, onReject)
   return originalPush.call(this, location).catch(err => err)
 }
-
 
 /**
  * 导出 基础路由

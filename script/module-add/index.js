@@ -1,8 +1,8 @@
 /*
- * @Author: hans.taozhiwei
+ * @Author: hans.xiaozheng
  * @Description: 模块安装 itheima-module Add <module-name>
- * @Date: 2018-04-13 16:13:27 
- * @Last Modified by: hans.taozhiwei
+ * @Date: 2018-04-13 16:13:27
+ * @Last Modified by: hans.xiaozheng
  * @Last Modified time: 2018-09-20 14:49:21
  */
 

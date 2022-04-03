@@ -346,3 +346,15 @@ export function getBlob(response) {
 export function imgHandle(obj) {
   return window.URL.createObjectURL(obj)
 }
+
+export function getInteger(e, callback) {
+  let boolean = new RegExp('^[1-9][0-9]*$').test(e.target.value)
+  if (!boolean) {
+    var tipType = '请输入正整数'
+    callback(tipType)
+    e.target.value = ''
+  }
+}
+export function getIntegerPoint(e, callback) {
+  e.target.value = e.target.value.match(/^\d*(\.?\d{0,1})/g)[0] || null
+}

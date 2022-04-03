@@ -1,6 +1,6 @@
 /*
  * @Author: 小政 <1911298402@qq.com>
- * @Description: 公司设置
+ * @Description: 社保
  * @Date: 2018-04-13 16:13:27
  * @Last Modified by: hans.xiaozheng
  * @Last Modified time: 2018-04-13 16:15:33
