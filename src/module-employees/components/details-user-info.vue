@@ -417,6 +417,7 @@
         this.formData.userId = this.$route.params.id
         this.formData.username = this.userData.username
         this.formData.departmentName = this.userData.departmentName
+        this.formData.departmentId = this.userData.departmentId
         this.formData.mobile = this.userData.mobile
         this.formData.staffPhoto = this.userData.staffPhoto
         this.formData.timeOfEntry = this.userData.timeOfEntry

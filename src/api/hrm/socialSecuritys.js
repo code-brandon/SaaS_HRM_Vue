@@ -5,6 +5,7 @@ export const list = data => createAPI('/api/social_security/ss/usersocialsecurit
 export const getSettings = data => createAPI('/api/social_security/ss/companysettings/info', 'get')
 // 保存设置当前企业的社保信息
 export const saveSettings = data => createAPI('/api/social_security/ss/companysettings/save', 'post', data)
+
 export const getTips = data => createAPI(`/api/social_security/ss/tips/${data.yearMonth}`, 'get')
 
 // 用户社保详情

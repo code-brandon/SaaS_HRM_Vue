@@ -74,7 +74,7 @@ export default {
     this.getObjInfo()
     deptApi.list().then(ret => {
       if (ret.data.code == 10000){
-        this.inspectionObjectOptions = commonApi.transformTozTreeFormat(ret.data.data.depts)
+        this.inspectionObjectOptions = commonApi.transformTozTreeFormat(ret.data.data.departments)
       }
 
     })

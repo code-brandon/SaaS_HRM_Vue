@@ -41,14 +41,14 @@
                             </el-dropdown-menu>
                           </el-dropdown>
                         </div>
-                      </span>  
+                      </span>
                     </div>
                   </div>
 
-                  <!-- 
+                  <!--
                     构造树形列表
                       叶子 <i class="fa fa-male"></i>
-                      非叶子 
+                      非叶子
                         展开 <i class="fa fa-minus-square-o">
                         闭合 <i class="fa fa-plus-square-o">
                     <div class="generalClass" slot-scope="{node,data}" style="width:99%">
@@ -92,12 +92,12 @@
                                 </el-dropdown-menu>
                               </el-dropdown>
                             </div>
-                          </span>  
+                          </span>
                         </div>
                       </div>
                     </el-tree>
               </div>
-            </div>    
+            </div>
       </el-card>
     </div>
     <!--:visible.sync 是否显示 -->
@@ -105,74 +105,74 @@
     <component v-bind:is="deptAdd" ref="addDept"></component>
 </div>
 </template>
- 
+
 <!-- 引入组件 -->
 <script>
-//引入api
-import {list,saveOrupdate,find,deleteById} from "@/api/base/dept"
+// 引入api
+import {list, saveOrupdate, find, deleteById} from '@/api/base/dept'
 import commonApi from '@/utils/common'
 import deptAdd from './../components/add'
 export default {
   name: 'departments-index',
-  components:{deptAdd},
+  components: {deptAdd},
   data() {
     return {
-      deptAdd:'deptAdd',
-      activeName: 'first', 
-      departData:{},
-      depts:[]
+      deptAdd: 'deptAdd',
+      activeName: 'first',
+      departData: {},
+      depts: []
     }
   },
   methods: {
-      //添加部门
+      // 添加部门
     handlAdd(parentId) {
-      //父页面调用子组件中的内容
-      this.$refs.addDept.dept = {pid:parentId,companyId:this.departData.companyId}
-      this.$refs.addDept.dialogFormVisible = true;
-      this.$refs.addDept.showOrSave = true;
+      // 父页面调用子组件中的内容
+      this.$refs.addDept.dept = {pid: parentId, companyId: this.departData.companyId}
+      this.$refs.addDept.dialogFormVisible = true
+      this.$refs.addDept.showOrSave = true
     },
-    //查看部门
+    // 查看部门
     handUpdate(id) {
-      //根据id查询部门
-      find({id:id}).then(res => {
-         //数据绑定到dept对象中
-         this.$refs.addDept.dept = res.data.data;
-         this.$refs.addDept.dialogFormVisible = true;
-         this.$refs.addDept.showOrSave = false;
+      // 根据id查询部门
+      find({id: id}).then(res => {
+         // 数据绑定到dept对象中
+         this.$refs.addDept.dept = res.data.data
+         this.$refs.addDept.dialogFormVisible = true
+         this.$refs.addDept.showOrSave = false
 
       })
     },
-  
+
     handleDelete(id) {
        this.$confirm('是否删除此条记录?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          deleteById([id]).then(res=> {
+          deleteById([id]).then(res => {
             this.$message({
               message: res.data.message,
-              type: res.data.data?'success':'error'
-            });
-            if(res.data.data) {
-              location.reload();
+              type: res.data.data ? 'success' : 'error'
+            })
+            if (res.data.data) {
+              location.reload()
             }
           })
         })
     },
 
-    //构造查询方法
+    // 构造查询方法
     getList() {
       list().then(res => {
        this.departData = res.data.data
-       //将普通的数据转化为父子接口
-       this.depts = commonApi.transformTozTreeFormat(res.data.data.departments);
+       // 将普通的数据转化为父子接口
+       this.depts = commonApi.transformTozTreeFormat(res.data.data.departments)
       })
     }
   },
   created: function() {
-    this.getList();
-  },
+    this.getList()
+  }
 }
 </script>
 <style rel="stylesheet/scss" lang="scss">
@@ -213,7 +213,7 @@ export default {
 </style>
 <style  rel="stylesheet/scss" lang="scss" scoped>
 .el-tree-node__expand-icon{
- 
+
 }
 .el-icon-caret-right{}
 .el-tree-node__content{
