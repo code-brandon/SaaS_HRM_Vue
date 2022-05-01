@@ -1,10 +1,10 @@
 <template>
   <div class='finish_room'>
     <div class='finish_room2'>
-        <div class="imgInfo" v-if="imgs!==''">
+        <div class="imgInfo" v-if="typeof (imgs) !== 'undefined' && imgs!==''">
           <img :src="imgs" @click='delete_img'>
         </div>
-        <div class='room_add_img'>
+        <div v-else class='room_add_img'>
             <!-- <span><img src="./imgs/add_img.png"></span> -->
             <span>{{textTip}}</span>
             <i class="el-icon-plus avatar-uploader-icon"></i>

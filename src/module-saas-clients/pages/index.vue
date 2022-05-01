@@ -158,14 +158,18 @@ export default {
   name: 'saas-clients-index',
   data () {
     return {
-      dataList:[]
+      query: {
+        page: 1,
+        limit: 10
+      },
+      dataList: []
     }
   },
   methods: {
     getList() {
-      //调用API发起请求
-      //res=响应数据
-      list().then(res => {
+      // 调用API发起请求
+      // res=响应数据
+      list(this.query).then(res => {
         this.dataList = res.data.data.page.list
       })
     }

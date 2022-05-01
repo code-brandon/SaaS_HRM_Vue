@@ -139,7 +139,7 @@
 <script>
 import { checkPhone, getBlob } from '@/filters/index'
 import { refort, importDown } from '@/api/base/employees'
-import {createAPI} from "@/utils/request"
+import {createAPI} from '@/utils/request'
 export default {
   name: 'exampleList',
   components: {},
@@ -157,7 +157,7 @@ export default {
       barSearch: {
         alertText: ''
       },
-      exportUrl:'',
+      exportUrl: '',
       requestParameters: {
         type: 1,
         month: this.baseData.month,
@@ -265,10 +265,10 @@ export default {
       }
       importDown(data)
         .then(res => {
-          /*var elemIF = document.createElement("iframe");
+          /* var elemIF = document.createElement("iframe");
           elemIF.src = res.request.responseURL;
           elemIF.style.display = "none";
-          document.body.appendChild(elemIF);*/
+          document.body.appendChild(elemIF); */
             console.log(res)
             // 此处有个坑。这里用content保存文件流，最初是content=res，但下载的test.xls里的内容以下图1，
             // 检查了下才发现，后端对文件流作了一层封装，因此将content指向res.data便可
@@ -325,7 +325,7 @@ export default {
     var date = new Date()
     var year = date.getFullYear()
     var month = year + '-' + this.$route.params.month
-    this.exportUrl = process.env.BASE_API+"/employees/export/"+month,
+    this.exportUrl = process.env.BASE_API + '/employees/export/' + month,
     this.doQuery()
   },
   // 组件更新

@@ -2,6 +2,9 @@ import store from '@/store'
 
 // 检查是否有权限
 export function hasPermission(roles, route) {
+  if (typeof (roles) === 'undefined') {
+    return false
+  }
   if (roles.menus && route.name) {
     return roles.menus.some(role => {
       return route.name.toLowerCase() === role.toLowerCase()
